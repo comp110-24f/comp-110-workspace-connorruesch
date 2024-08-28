@@ -5,6 +5,12 @@ __author__: str = "730739368"
 
 def main_planner(guests: int) -> None:
     """Plans the tea party based on the number of guests given."""
+    # Important note - coming from someone with prior experience
+    # in other programming languages, I needed to adjust to the having
+    # to change ints and other numerical values to strings in concatenation,
+    # which took me a second to figure out. It appears that Python
+    # doesn't automatically convert an integer or other numerical value
+    # to a string when concatentating, so we need to do it ourselves.
     print("A Cozy Tea Party for " + str(guests) + " People!")
     print("Tea Bags: " + str(tea_bags(people=guests)))
     print("Treats: " + str(treats(people=guests)))
@@ -29,6 +35,10 @@ def treats(people: int) -> int:
 
 def cost(tea_count: int, treat_count: int) -> float:
     """Calculates the total cost based on the number of teas and treats given."""
+    # I'm using parenthesis for clarity here, however
+    # it is worth nothing that the order of operations would
+    # remain the same regardless of whether we have parenthesis
+    # here or not.
     return (tea_count * 0.50) + (treat_count * 0.75)
 
 
