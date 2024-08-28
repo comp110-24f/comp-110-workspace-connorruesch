@@ -10,12 +10,13 @@ def main_planner(guests: int) -> None:
     # to change ints and other numerical values to strings in concatenation,
     # which took me a second to figure out. It appears that Python
     # doesn't automatically convert an integer or other numerical value
-    # to a string when concatentating, so we need to do it ourselves.
+    # to a string when concatentating (at least I got a syntax error),
+    # when I tried to do it without converting), so we need to do it ourselves.
     print("A Cozy Tea Party for " + str(guests) + " People!")
     print("Tea Bags: " + str(tea_bags(people=guests)))
     print("Treats: " + str(treats(people=guests)))
     print(
-        "Cost: "
+        "Cost: $"
         + str(
             cost(tea_count=tea_bags(people=guests), treat_count=treats(people=guests))
         )
