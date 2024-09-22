@@ -67,7 +67,9 @@ def contains_char(word: str, character: str) -> None:
 
     # If there were instances of the letter found in the word, print the amount
     # out, otherwise inform the user that there were none.
-    if count != 0:
+    if count == 1:
+        print(str(count) + " instance of " + character + " found in " + word)
+    elif count > 1:
         print(str(count) + " instances of " + character + " found in " + word)
     else:
         print("No instances of " + character + " found in " + word)
