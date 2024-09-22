@@ -10,7 +10,7 @@ def main() -> None:
 
 def input_word() -> str:
     """Collect a 5-letter input word from the user."""
-    word: str = input("Enter a five-letter word: ")
+    word: str = input("Enter a five-character word: ")
 
     # Check to make sure the word is 5 characters, if it
     # isn't print an error message.
@@ -42,7 +42,7 @@ def contains_char(word: str, character: str) -> None:
     count: int = 0
 
     if word[0] == character:
-        print(character + " found at index 1")
+        print(character + " found at index 0")
         count = count + 1
 
     # Note we cannot use 'elif' statements here
@@ -50,19 +50,19 @@ def contains_char(word: str, character: str) -> None:
     # letter, only the last one would be printed. Thus,
     # we need to use multiple, singular 'if' statements.
     if word[1] == character:
-        print(character + " found at index 2")
+        print(character + " found at index 1")
         count = count + 1
 
     if word[2] == character:
-        print(character + " found at index 3")
+        print(character + " found at index 2")
         count = count + 1
 
     if word[3] == character:
-        print(character + " found at index 4")
+        print(character + " found at index 3")
         count = count + 1
 
     if word[4] == character:
-        print(character + " found at index 5")
+        print(character + " found at index 4")
         count = count + 1
 
     # If there were instances of the letter found in the word, print the amount
