@@ -10,28 +10,28 @@ def main() -> None:
 
 def input_word() -> str:
     """Collect a 5-letter input word from the user."""
-    word: str = input("Enter a five-character word: ")
+    word: str = input("Enter a 5-character word: ")
 
-    # Check to make sure the word is 5 characters, if it
-    # isn't print an error message.
-    if len(word) != 5:
+    # Check to make sure the word is 5 characters, if it isn't,
+    # exit the program.
+    if len(word) == 5:
+        return word
+    else:
         print("Error: Word must contain 5 characters.")
-        exit()  # Invalid input: exit the program
-
-    return word
+        exit()  # Invalid input: exit the program.
 
 
 def input_letter() -> str:
     """Collect an input letter from the user."""
     letter: str = input("Enter a single character: ")
 
-    # Check to make sure the given input is a single letter,
-    # if it isn't, print an error message.
-    if len(letter) != 1:
+    # Check to make sure teh given input is a single character,
+    # if it isn't, inform the user and exit the program.
+    if len(letter) == 1:
+        return letter
+    else:
         print("Error: Character must be a single character.")
-        exit()  # Invalid input: exit the program
-
-    return letter
+        exit()
 
 
 def contains_char(word: str, character: str) -> None:
