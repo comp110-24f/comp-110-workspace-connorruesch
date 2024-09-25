@@ -21,3 +21,23 @@ def input_guess(secret_word_length: int) -> str:
         guess_word = input(f"That wasn't {secret_word_length} chars! Try again: ")
 
     return guess_word
+
+
+def contains_char(searched_string: str, character: str) -> bool:
+    """A function that returns true if the given character is present in
+    the searched string, and false is otherwise not."""
+    assert len(character) == 1
+
+    index: int = 0
+
+    while index < len(searched_string):
+        if searched_string[index] == character:
+            return True
+        else:
+            index += 1
+
+    # Will only return false if the while loop above doesn't find
+    # any instances where the given character is present in the
+    # searched word. Remember: we only need to find the first occurnace
+    # of the given character in the word, once we do, we can return.
+    return False
