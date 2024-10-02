@@ -82,12 +82,6 @@ def main(secret_word: str) -> None:
     # Define which turn we are on.
     turn: int = 1
 
-    # Check to make sure that we haven't used all of our turns
-    # already, if we have-- we can exit.
-    if turn > 6:
-        print("X/6 - Sorry, try again later!")
-        exit()
-
     # Initiate our primary game loop.
     while turn <= 6:
         print(f"=== Turn {turn}/6 ===")
@@ -105,6 +99,12 @@ def main(secret_word: str) -> None:
             exit()
 
         turn += 1
+
+    # Check to make sure we haven't used all of our turns--if
+    # we have, then we can go ahead and exit.
+    if turn > 6:
+        print("X/6 - Sorry, try again later!")
+        exit()
 
 
 if __name__ == "__main__":
