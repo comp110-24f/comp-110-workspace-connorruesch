@@ -2,6 +2,11 @@
 
 __author__: str = "730739368"
 
+# Define the emojis we'll be using in the actual game here.
+WHITE_BOX: str = "\U00002B1C"
+GREEN_BOX: str = "\U0001F7E9"
+YELLOW_BOX: str = "\U0001F7E8"
+
 
 def input_guess(secret_word_length: int) -> str:
     """Checks to make sure the guess word is the same length as the
@@ -41,3 +46,57 @@ def contains_char(searched_string: str, character: str) -> bool:
     # searched word. Remember: we only need to find the first occurnace
     # of the given character in the word, once we do, we can return.
     return False
+
+
+def emojified(guess: str, secret_word: str) -> str:
+    """Returns a string of black, yellow, or green emojis depending on whether or
+    not the guess matches the secret word. Black indicates a character isn't in
+    the word, yellow indicates that it is, it just isn't in the correct position,
+    and green indicates that a character is both in the word and in the correct
+    position."""
+    assert len(guess) == len(secret_word)
+
+    # Define our initial string, we will concatenate to it as we search through
+    # the words.
+    emojified_string: str = ""
+
+    # Index for searching.
+    index: int = 0
+
+    while index < len(guess):
+        if guess[index] == secret_word[index]:
+            emojified_string += f"{GREEN_BOX}"
+        elif contains_char(secret_word, guess[index]):
+            emojified_string += f"{YELLOW_BOX}"
+        else:
+            emojified_string += f"{WHITE_BOX}"
+
+        index += 1
+
+    return emojified_string
+
+
+def main(secret: str) -> None:
+    """The entrypoint of the program and main game loop."""
+    turn: int = 1
+    correct: bool = False
+
+    while (turn <= 6) and (correct is False):
+        print(f"=== Turn {turn}/6 ===")
+
+        input: str = input_guess(secret_word_length=len(secret))
+        print(emojified(input, secret))
+
+        if input == secret:
+            print(f"You won in {turn}/6 turns!")
+            exit()
+
+        turn += 1
+
+    if turn > 6:
+        print("X/6 - Sorry, try again later!")
+        exit()
+
+
+if __name__ == "__main__":
+    main(secret="codes")

@@ -56,3 +56,16 @@ display(game_points)
 game_points.append(102)
 
 print(game_points)
+
+
+def lessen(my_list: list[int]):
+    idx: int = 0
+    while idx < len(my_list):
+        my_list[idx] = my_list[idx] - 1
+        idx += 1
+
+    print(my_list)
+
+
+msg: list[int] = [4, 5, 6]
+lessen(msg)
