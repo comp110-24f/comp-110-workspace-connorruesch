@@ -96,7 +96,7 @@ def main(secret_word: str) -> None:
         # we can go ahead and exit the game loop.
         if input == secret_word:
             print(f"You won in {turn}/6 turns!")
-            exit()
+            return
 
         turn += 1
 
@@ -104,7 +104,7 @@ def main(secret_word: str) -> None:
     # we have, then we can go ahead and exit.
     if turn > 6:
         print("X/6 - Sorry, try again later!")
-        exit()
+        return
 
 
 if __name__ == "__main__":
