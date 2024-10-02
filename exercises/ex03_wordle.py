@@ -12,31 +12,31 @@ def input_guess(secret_word_length: int) -> str:
     """Checks to make sure the guess word is the same length as the
     secret word--if it is, we return the guess word."""
 
-    guess_word: str = input(f"Enter a {secret_word_length} character word: ")
+    guess: str = input(f"Enter a {secret_word_length} character word: ")
 
     # Had to be a little more creative with this, since we have two potential cases
     # that we're trying to prevent: if the number of the characters in the guess word
     # is less than the length of the secret word, and if it is higher. My solution: if
     # it isn't, we just continually prompt the user for an input, and keep changing the
     # guess word variable until they enter a word of the correct length.
-    while len(guess_word) != secret_word_length:
+    while len(guess) != secret_word_length:
         # Since python's input() function halts the program execution until a user
         # enters an input, all we have to do is change our guess_word variable
         # and continually evaluate what the length of it is.
-        guess_word = input(f"That wasn't {secret_word_length} chars! Try again: ")
+        guess = input(f"That wasn't {secret_word_length} chars! Try again: ")
 
-    return guess_word
+    return guess
 
 
-def contains_char(searched_string: str, character: str) -> bool:
+def contains_char(searched: str, char: str) -> bool:
     """A function that returns true if the given character is present in
     the searched string, and false is otherwise not."""
-    assert len(character) == 1
+    assert len(char) == 1
 
     index: int = 0
 
-    while index < len(searched_string):
-        if searched_string[index] == character:
+    while index < len(searched):
+        if searched[index] == char:
             return True
         else:
             index += 1
@@ -66,7 +66,7 @@ def emojified(guess: str, secret_word: str) -> str:
     while index < len(guess):
         if guess[index] == secret_word[index]:
             emojified_string += f"{GREEN_BOX}"
-        elif contains_char(secret_word, guess[index]):
+        elif contains_char(searched=secret_word, char=guess[index]):
             emojified_string += f"{YELLOW_BOX}"
         else:
             emojified_string += f"{WHITE_BOX}"
@@ -76,27 +76,36 @@ def emojified(guess: str, secret_word: str) -> str:
     return emojified_string
 
 
-def main(secret: str) -> None:
+def main(secret_word: str) -> None:
     """The entrypoint of the program and main game loop."""
-    turn: int = 1
-    correct: bool = False
 
-    while (turn <= 6) and (correct is False):
+    # Define which turn we are on.
+    turn: int = 1
+
+    # Check to make sure that we haven't used all of our turns
+    # already, if we have-- we can exit.
+    if turn > 6:
+        print("X/6 - Sorry, try again later!")
+        exit()
+
+    # Initiate our primary game loop.
+    while turn <= 6:
         print(f"=== Turn {turn}/6 ===")
 
-        input: str = input_guess(secret_word_length=len(secret))
-        print(emojified(input, secret))
+        # Gather our user input.
+        input: str = input_guess(secret_word_length=len(secret_word))
 
-        if input == secret:
+        # Output emojified string.
+        print(emojified(guess=input, secret_word=secret_word))
+
+        # Check to see if the user has won, if they have, then
+        # we can go ahead and exit the game loop.
+        if input == secret_word:
             print(f"You won in {turn}/6 turns!")
             exit()
 
         turn += 1
 
-    if turn > 6:
-        print("X/6 - Sorry, try again later!")
-        exit()
-
 
 if __name__ == "__main__":
-    main(secret="codes")
+    main(secret_word="codes")
