@@ -41,6 +41,7 @@ def max(input: list[int]) -> int:
     while index < len(input):
         if input[index] > largest_num:
             largest_num = input[index]
+        index += 1
 
     return largest_num
 
