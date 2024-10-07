@@ -32,7 +32,7 @@ def max(input: list[int]) -> int:
         raise ValueError("max() arg is an empty List")  # List cannot be empty.
 
     index: int = 0
-    largest_num: int = 0
+    largest_num: int = input[0]
 
     # We note down the largest number we have come across so far, and
     # if there is another element in the list that is larger than that--
@@ -75,3 +75,6 @@ def extend(list_1: list[int], list_2: list[int]) -> None:
     while index < len(list_2):
         list_1.append(list_2[index])
         index += 1
+
+
+print(max([-1, -2, 0]))
