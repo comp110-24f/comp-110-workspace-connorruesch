@@ -9,6 +9,17 @@ class Node:
         self.value = value
         self.next = next
 
+    def __str__(self) -> str:
+        """Produce a string representation of a linked list."""
+        rest: str = "TODO"
+        # TODO: figure out the rest of the list
+        if self.next is None:
+            rest = "None"
+        else:
+            rest = str(self.next)
+
+        return f"{self.value} -> {rest}"
+
 
 two: Node = Node(2, None)
 one: Node = Node(1, two)
@@ -24,5 +35,12 @@ def to_str(head: Node | None) -> str:
         return f"{head.value} -> {rest}"
 
 
-print(to_str(one))
-print(to_str(courses))
+def last(head: Node) -> int:
+    """Return the last value of a non-empty list."""
+    if head.next is None:
+        return head.value
+    else:
+        return last(head.next)
+
+
+print(last(courses))  # expect to print 301
