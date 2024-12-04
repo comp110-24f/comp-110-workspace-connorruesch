@@ -1,4 +1,4 @@
-"""EX08 - Linked List Utils"""
+"""EX08 - Linked List Utils."""
 
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ class Node:
     next: Node | None
 
     def __init__(self, value: int, next: Node | None):
-        """Create a new node instance w/ a value and the next node (or none)"""
+        """Create a new node instance w/ a value and the next node (or none)."""
         self.value = value
         self.next = next
 
@@ -67,7 +67,7 @@ def max(head: Node | None) -> int:
 
 
 def linkify(items: list[int]) -> Node | None:
-    """Creates a linked list based on the given list of integers"""
+    """Creates a linked list based on the given list of integers."""
     # Base case: list of items is empty
     # recursive case, we need to add more items
     if len(items) == 0:
